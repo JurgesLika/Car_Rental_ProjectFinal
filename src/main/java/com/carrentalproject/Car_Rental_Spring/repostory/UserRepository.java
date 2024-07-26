@@ -1,6 +1,6 @@
 package com.carrentalproject.Car_Rental_Spring.repostory;
 
-import com.carrentalproject.Car_Rental_Spring.Entity.User;
+import com.carrentalproject.Car_Rental_Spring.entity.User;
 import com.carrentalproject.Car_Rental_Spring.enums.UserRole;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

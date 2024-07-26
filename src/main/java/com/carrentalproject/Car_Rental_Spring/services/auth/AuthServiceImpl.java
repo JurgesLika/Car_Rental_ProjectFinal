@@ -2,7 +2,7 @@ package com.carrentalproject.Car_Rental_Spring.services.auth;
 
 import com.carrentalproject.Car_Rental_Spring.dto.SignupRequest;
 import com.carrentalproject.Car_Rental_Spring.dto.UserDto;
-import com.carrentalproject.Car_Rental_Spring.Entity.User;
+import com.carrentalproject.Car_Rental_Spring.entity.User;
 import com.carrentalproject.Car_Rental_Spring.enums.UserRole;
 import com.carrentalproject.Car_Rental_Spring.repostory.UserRepository;
 import jakarta.annotation.PostConstruct;

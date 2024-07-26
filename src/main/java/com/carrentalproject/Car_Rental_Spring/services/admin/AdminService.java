@@ -2,6 +2,8 @@ package com.carrentalproject.Car_Rental_Spring.services.admin;
 
 import com.carrentalproject.Car_Rental_Spring.dto.BookACarDto;
 import com.carrentalproject.Car_Rental_Spring.dto.CarDto;
+import com.carrentalproject.Car_Rental_Spring.dto.CarDtoList;
+import com.carrentalproject.Car_Rental_Spring.dto.SearchCarDto;
 import org.springframework.aop.target.LazyInitTargetSource;
 
 import java.io.IOException;
@@ -20,5 +22,5 @@ public interface AdminService {
 
    boolean changeBookingStatus(Long bookingId,String status);
 
-
+   CarDtoList searchCar(SearchCarDto searchCarDto);
 }
