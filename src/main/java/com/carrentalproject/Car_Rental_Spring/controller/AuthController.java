@@ -1,6 +1,6 @@
 package com.carrentalproject.Car_Rental_Spring.controller;
 
-import com.carrentalproject.Car_Rental_Spring.Entity.User;
+import com.carrentalproject.Car_Rental_Spring.entity.User;
 import com.carrentalproject.Car_Rental_Spring.dto.AuthenticationRequest;
 import com.carrentalproject.Car_Rental_Spring.dto.AuthenticationResponse;
 import com.carrentalproject.Car_Rental_Spring.dto.SignupRequest;

@@ -1,13 +1,17 @@
 package com.carrentalproject.Car_Rental_Spring.services.admin;
 
-import com.carrentalproject.Car_Rental_Spring.Entity.BookACar;
+import com.carrentalproject.Car_Rental_Spring.dto.CarDtoList;
+import com.carrentalproject.Car_Rental_Spring.dto.SearchCarDto;
+import com.carrentalproject.Car_Rental_Spring.entity.BookACar;
 import com.carrentalproject.Car_Rental_Spring.dto.BookACarDto;
 import com.carrentalproject.Car_Rental_Spring.dto.CarDto;
-import com.carrentalproject.Car_Rental_Spring.Entity.Car;
+import com.carrentalproject.Car_Rental_Spring.entity.Car;
 import com.carrentalproject.Car_Rental_Spring.enums.BookCarStatus;
 import com.carrentalproject.Car_Rental_Spring.repostory.BookACarRepository;
 import com.carrentalproject.Car_Rental_Spring.repostory.CarRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Example;
+import org.springframework.data.domain.ExampleMatcher;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -101,5 +105,23 @@ private final BookACarRepository bookACarRepository;
             return true;
         }
         return false;
+    }
+
+    @Override
+    public CarDtoList searchCar(SearchCarDto searchCarDto) {
+        Car car = new Car();
+        car.setBrand(searchCarDto.getBrand());
+        car.setType(searchCarDto.getType());
+        car.setTransmission(searchCarDto.getTransmission());
+        ExampleMatcher exampleMatcher =
+                ExampleMatcher.matchingAll()
+                        .withMatcher("brand",ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase())
+                        .withMatcher("type",ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase())
+                        .withMatcher("transmission",ExampleMatcher.GenericPropertyMatchers.contains().ignoreCase());
+        Example<Car> carExample = Example.of(car,exampleMatcher);
+        List<Car> carList = carRepository.findAll(carExample);
+        CarDtoList carDtoList = new CarDtoList();
+        carDtoList.setCarDtoList(carList.stream().map(Car::getCarDto).collect(Collectors.toList()));
+        return carDtoList;
     }
 }
